@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "task-project"
+version = "0.0.0"
+description = ""
+authors = ["Gavrilov Group <167272826+gavrilovv@users.noreply.github.com>"]
+license = ""
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+fastapi = "^0.110.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
