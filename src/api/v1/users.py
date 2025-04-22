@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.models import UserId, Task, TaskPartialUpdate
+from src.models import UserId, Task, TaskPartialUpdate
 
 
 app = FastAPI()
