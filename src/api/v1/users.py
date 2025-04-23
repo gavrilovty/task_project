@@ -1,29 +1,24 @@
-from fastapi import FastAPI
-from src.models import UserId, Task, TaskPartialUpdate
+from fastapi import APIRouter
+from src.api.shemas.task import CreateTask, TaskPartialUpdate
+
+router_task_v1 = APIRouter(prefix="/task/v1", tags=["task | v1"])
 
 
-app = FastAPI()
-
-data = {}
-
-@app.get("/tasks")
-async def get_tasks(user_id: UserId):
-    return {"response": 200, "user_id": user_id}
+@router_task_v1.get("/{user_id}")
+async def get_tasks(user_id: int):
+    ...
 
 
-@app.post("/create")
-async def create_task(task: Task):
-    data[f"{task.user_id}"] = [task.user_id, task.title]
-    return {"response": 200, "user_id": task.user_id}
-
-@app.patch("/description")
-async def refactor_description(task: TaskPartialUpdate):
-    try:
-        return {"response": 200}
-    except Exception as e:
-        print(e)
+@router_task_v1.post("/create/{user_id}")
+async def create_task(user_id: int, task: CreateTask):
+    ...
 
 
-@app.delete("/tasks/{task_id}")
-def delete_task(user_id: int):
-    return {"response": 200, "user_id": user_id}
+@router_task_v1.patch("/description/{task_id}")
+async def refactor_description(task_id: int, task: TaskPartialUpdate):
+    ...
+
+
+@router_task_v1.delete("/{user_id}/{task_id}")
+def delete_task(user_id: int, task_id: int):
+    ...
